@@ -12,6 +12,7 @@ var stary = [];
 var tinyx = [];
 var tinyy = [];
 var tinyv = [];
+var sparkleTimer = null;
 window.addEventListener("load", function () {
   if (document.getElementById) {
     for (var i = 0; i < sparkles; i++) {
@@ -37,10 +38,27 @@ window.addEventListener("load", function () {
     }
     set_width();
     sparkle();
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        if (sparkleTimer !== null) {
+          clearTimeout(sparkleTimer);
+          sparkleTimer = null;
+        }
+      } else {
+        if (sparkleTimer === null) {
+          sparkle();
+        }
+      }
+    });
   }
 });
 
 function sparkle() {
+  if (document.hidden) {
+    sparkleTimer = null;
+    return;
+  }
   if (Math.abs(x - ox) > 1 || Math.abs(y - oy) > 1) {
     ox = x;
     oy = y;
@@ -62,7 +80,7 @@ function sparkle() {
     if (starv[c]) update_star(c);
     if (tinyv[c]) update_tiny(c);
   }
-  setTimeout(sparkle, 40);
+  sparkleTimer = setTimeout(sparkle, 40);
 }
 
 function update_star(i) {

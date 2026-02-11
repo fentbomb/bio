@@ -1,117 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:url" content="https://plug.is-a.dev" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content=":3" />
-    <meta name="theme-color" content="#141414" />
-    <title>Overdose</title>
 
-    <link rel="preload" href="./assets/css/1.css" as="style" />
-    <link rel="preload" href="./assets/scripts/script.js" as="script" />
-    <link rel="preload" href="./assets/scripts/sparkle.js" as="script" />
-    <link rel="preload" href="./assets/scripts/log.js" as="script" />
-    <link rel="preload" href="./assets/scripts/redirect.js" as="script" />
-    <link rel="preload" as="image" href="assets/img/fluttershy.gif" />
-    <link rel="stylesheet" href="./assets/css/1.css" />
-    <script src="./assets/scripts/script.js" defer></script>
-    <script src="./assets/scripts/redirect.js" defer></script>
-    <script src="./assets/scripts/sparkle.js" defer></script>
-    <script src="./assets/scripts/log.js" defer></script>
-    <script
-      disable-devtool-auto
-      src="https://cdn.jsdelivr.net/npm/disable-devtool"
-    ></script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:url" content="https://plug.is-a.dev" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content=":3" />
+  <meta name="theme-color" content="#141414" />
+  <title>Overdose</title>
 
-  <body>
-    <main id="flexboxcontainer">
-      <section
-        class="clicktocontinuecontainer"
-        role="button"
-        tabindex="0"
-        aria-label="Click to continue"
-      >
-        <p class="center accent" id="overdoseText">over</p>
-        <p class="center" id="doseText">dose</p>
-      </section>
-    </main>
+  <link rel="preload" href="./assets/css/1.css" as="style" />
+  <link rel="preload" href="./assets/scripts/script.js" as="script" />
+  <link rel="preload" href="./assets/scripts/sparkle.js" as="script" />
+  <link rel="preload" href="./assets/scripts/log.js" as="script" />
+  <link rel="preload" href="./assets/scripts/redirect.js" as="script" />
+  <link rel="preload" as="image" href="assets/img/fluttershy.gif" />
+  <link rel="stylesheet" href="./assets/css/1.css" />
+  <script src="./assets/scripts/script.js" defer></script>
+  <script src="./assets/scripts/redirect.js" defer></script>
+  <script src="./assets/scripts/sparkle.js" defer></script>
+  <script src="./assets/scripts/log.js" defer></script>
+  <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
+</head>
 
-    <section id="hiddencontainer" style="display: none" aria-hidden="true">
-      <article class="terminal" id="terminal" aria-label="Terminal output">
-        <div class="ascii-container">
-          <img
-            id="gif"
-            class="lazy-image"
-            src="assets/img/fluttershy.gif"
-            alt="Fluttershy animated gif"
-            loading="eager"
-          />
-          <div
-            id="welcome-text"
-            class="typing"
-            aria-label="Welcome message"
-          ></div>
-          <div>------- TIME -------</div>
-          <div id="time" aria-label="Time"></div>
-          <div>------- DEVICE & BROWSER -------</div>
-          <div id="device-info" aria-label="Device information"></div>
-          <div>------- IPDATA -------</div>
-          <div id="ip-address" aria-label="IP address"></div>
-          <div id="country" aria-label="Country"></div>
-          <div id="location" aria-label="Location"></div>
-          <div id="isp" aria-label="ISP"></div>
-          <div>------- END --------</div>
-        </div>
-      </article>
-
-      <footer id="footer">
-        <p id="footer-text">© 2025 Overdose. All rights reserved.</p>
-      </footer>
+<body>
+  <main id="flexboxcontainer">
+    <section class="clicktocontinuecontainer" role="button" tabindex="0" aria-label="Click to continue">
+      <p class="center accent" id="overdoseText">over</p>
+      <p class="center" id="doseText">dose</p>
     </section>
+  </main>
 
-    <script defer>
-      document.addEventListener("DOMContentLoaded", () => {
-        const typeText = (
-          el,
-          text,
-          typeDelay = 200,
-          pauseDelay = 2500,
-          deleteDelay = 100
-        ) => {
-          if (!el) return;
-          let i = 0;
-          const type = () => {
-            if (i <= text.length) {
-              el.textContent = text.slice(0, i++);
-              setTimeout(type, typeDelay);
-            } else {
-              setTimeout(deleteText, pauseDelay);
-            }
-          };
-          const deleteText = () => {
-            if (i > 0) {
-              el.textContent = text.slice(0, --i);
-              setTimeout(deleteText, deleteDelay);
-            } else {
-              setTimeout(type, typeDelay);
-            }
-          };
-          type();
+  <section id="hiddencontainer" style="display: none" aria-hidden="true">
+    <article class="terminal" id="terminal" aria-label="Terminal output">
+      <div class="ascii-container">
+        <img id="gif" class="lazy-image" src="assets/img/fluttershy.gif" alt="Fluttershy animated gif"
+          loading="eager" />
+        <div id="welcome-text" class="typing" aria-label="Welcome message"></div>
+        <div>------- TIME -------</div>
+        <div id="time" aria-label="Time"></div>
+        <div>------- DEVICE & BROWSER -------</div>
+        <div id="device-info" aria-label="Device information"></div>
+        <div>------- IPDATA -------</div>
+        <div id="ip-address" aria-label="IP address"></div>
+        <div id="country" aria-label="Country"></div>
+        <div id="location" aria-label="Location"></div>
+        <div id="isp" aria-label="ISP"></div>
+        <div>------- END --------</div>
+      </div>
+    </article>
+
+    <footer id="footer">
+      <p id="footer-text">
+        <span id="footer-text-content">© 2025 Overdose. All rights reserved.</span>
+        <a id="discord-link" href="./discord.html" target="_blank" rel="noopener noreferrer" aria-label="Discord"
+          title="Discord">
+          <svg id="discord-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" aria-hidden="true"
+            focusable="false">
+            <path fill="currentColor"
+              d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0 105.89 105.89 0 0 0 19.39 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2.06a75.57 75.57 0 0 0 64.32 0c.87.72 1.76 1.4 2.66 2.06a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.3-4.51-51.11-18.74-72.98ZM42.45 65.69c-6.18 0-11.29-5.67-11.29-12.65s4.99-12.65 11.29-12.65 11.34 5.67 11.29 12.65-5 12.65-11.29 12.65Zm42.24 0c-6.18 0-11.29-5.67-11.29-12.65s4.99-12.65 11.29-12.65 11.34 5.67 11.29 12.65-5 12.65-11.29 12.65Z" />
+          </svg>
+        </a>
+      </p>
+    </footer>
+  </section>
+
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const typeText = (
+        el,
+        text,
+        typeDelay = 200,
+        pauseDelay = 2500,
+        deleteDelay = 100
+      ) => {
+        if (!el) return;
+        let i = 0;
+        const type = () => {
+          if (i <= text.length) {
+            el.textContent = text.slice(0, i++);
+            setTimeout(type, typeDelay);
+          } else {
+            setTimeout(deleteText, pauseDelay);
+          }
         };
-        const welcomeEl = document.getElementById("welcome-text");
-        typeText(welcomeEl, "Welcome To Overdose");
-        const lazyImg = document.querySelector(".lazy-image");
-        if (lazyImg.complete) {
+        const deleteText = () => {
+          if (i > 0) {
+            el.textContent = text.slice(0, --i);
+            setTimeout(deleteText, deleteDelay);
+          } else {
+            setTimeout(type, typeDelay);
+          }
+        };
+        type();
+      };
+      const welcomeEl = document.getElementById("welcome-text");
+      typeText(welcomeEl, "Welcome To Overdose");
+      const lazyImg = document.querySelector(".lazy-image");
+      if (lazyImg.complete) {
+        lazyImg.classList.add("loaded");
+      } else {
+        lazyImg.addEventListener("load", () => {
           lazyImg.classList.add("loaded");
-        } else {
-          lazyImg.addEventListener("load", () => {
-            lazyImg.classList.add("loaded");
-          });
-        }
-      });
-    </script>
-  </body>
+        });
+      }
+    });
+  </script>
+</body>
+
 </html>

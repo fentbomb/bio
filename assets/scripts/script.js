@@ -12,7 +12,13 @@ let hasEntered = false;
 const flexContainer = document.getElementById("flexboxcontainer");
 const hiddenContainer = document.getElementById("hiddencontainer");
 const footerText = document.getElementById("footer-text");
+const footerTextContent = document.getElementById("footer-text-content");
 const footerNotice = document.getElementById("footer-notice");
+const currentYear = new Date().getFullYear();
+
+if (footerTextContent) {
+  footerTextContent.textContent = `© ${currentYear} Overdose. All rights reserved.`;
+}
 
 function playNextSong() {
   const nextSongIndex = (currentSongIndex + 1) % songs.length;
@@ -37,7 +43,9 @@ function userHasClicked() {
 
 function changeFooterText() {
   if (footerText) {
-    footerText.innerHTML = "&copy; 2025 Overdose. All rights reserved.";
+    if (footerTextContent) {
+      footerTextContent.textContent = `© ${currentYear} Overdose. All rights reserved.`;
+    }
     footerText.style.cursor = "default";
   }
 }

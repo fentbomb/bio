@@ -4,14 +4,15 @@ body {
   margin: 0;
   background-color: #121212;
   color: #b0b0b0;
-  font-family: monospace;
+  font-family: Consolas, "Lucida Console", "Courier New", monospace;
   cursor: url("../img/cur.png"), auto;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   text-shadow: #000 0 0 50px;
-  font-size: clamp(14px, 1.5vw, 18px);
+  font-size: clamp(12px, 1.2vw, 16px);
+  line-height: 1.35;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,6 +34,40 @@ footer {
   padding: 10px;
   font-size: 12px;
   z-index: 1;
+}
+
+#discord-link {
+  color: #b0b0b0;
+  text-decoration: none;
+  opacity: 0.85;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  vertical-align: middle;
+  transform: translateY(0);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+#discord-link:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+#discord-link:focus-visible {
+  outline: 2px solid #b0b0b0;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+#discord-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  transition: transform 250ms ease;
+}
+
+#discord-link:hover #discord-icon {
+  transform: rotate(-6deg) scale(1.03);
 }
 
 #flexboxcontainer {
@@ -79,6 +114,22 @@ footer {
   animation: fadeIn 1s forwards;
   z-index: 3;
   position: absolute;
+  transform: translateY(6px);
+  transition: opacity 200ms ease, transform 250ms ease;
+}
+
+.clicktocontinuecontainer {
+  animation: fadeIn 1s forwards, ctcPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes ctcPulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(0, 0, 0, 0.65));
+  }
 }
 
 @keyframes fadeIn {
@@ -93,6 +144,7 @@ footer {
 
 .clicktocontinuecontainer:hover {
   opacity: 0.6;
+  transform: translateY(0);
 }
 
 .center {
@@ -107,14 +159,112 @@ footer {
   font-family: monospace;
   padding: 20px;
   color: white;
+  max-width: 100vw;
+  box-sizing: border-box;
+  animation: terminalGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes terminalGlow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(0, 0, 0, 0.75));
+  }
+  100% {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.35));
+  }
+}
+
+#hiddencontainer.show .ascii-container > * {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: riseIn 520ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+#hiddencontainer.show .ascii-container > *:nth-child(1) {
+  animation-delay: 40ms;
+}
+#hiddencontainer.show .ascii-container > *:nth-child(2) {
+  animation-delay: 90ms;
+}
+#hiddencontainer.show .ascii-container > *:nth-child(3) {
+  animation-delay: 140ms;
+}
+#hiddencontainer.show .ascii-container > *:nth-child(4) {
+  animation-delay: 190ms;
+}
+#hiddencontainer.show .ascii-container > *:nth-child(5) {
+  animation-delay: 240ms;
+}
+#hiddencontainer.show .ascii-container > *:nth-child(6) {
+  animation-delay: 290ms;
+}
+#hiddencontainer.show .ascii-container > *:nth-child(7) {
+  animation-delay: 340ms;
+}
+#hiddencontainer.show .ascii-container > *:nth-child(8) {
+  animation-delay: 390ms;
+}
+#hiddencontainer.show .ascii-container > *:nth-child(9) {
+  animation-delay: 440ms;
+}
+#hiddencontainer.show .ascii-container > *:nth-child(10) {
+  animation-delay: 490ms;
+}
+#hiddencontainer.show .ascii-container > *:nth-child(11) {
+  animation-delay: 540ms;
+}
+#hiddencontainer.show .ascii-container > *:nth-child(12) {
+  animation-delay: 590ms;
+}
+
+@keyframes riseIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ascii-container {
+  max-width: 1000px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#device-info,
+#ip-address,
+#country,
+#location,
+#isp,
+#welcome-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 #gif {
   position: relative;
   z-index: 1;
   width: 50%;
+  max-width: 320px;
   height: auto;
   object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  transition: transform 240ms ease, filter 240ms ease;
+}
+
+#gif:hover {
+  transform: scale(1.02);
+  filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.7));
+}
+
+@media (max-width: 600px) {
+  .terminal {
+    white-space: normal;
+    overflow: visible;
+  }
 }
 
 .typing::after {
@@ -132,6 +282,7 @@ footer {
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
